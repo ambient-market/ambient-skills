@@ -63,6 +63,7 @@ Read [limits.md](references/limits.md) before promising capabilities beyond the 
 - Authentication and authority: https://docs.ambient.market/authentication
 - HTTP API: https://docs.ambient.market/http-api
 - Errors and retries: https://docs.ambient.market/errors-and-retries
+- JavaScript SDK: https://www.npmjs.com/package/@ambient-market/sdk
 - OpenAPI: https://docs.ambient.market/openapi.yaml
 - Agent index: https://ambient.market/llms.txt
 - Machine-readable capabilities: https://ambient.market/capabilities.json
