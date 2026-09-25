@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ambient"
+  short_description: "Create and participate in programmable markets"
+  default_prompt: "Use Ambient to turn this opportunity into a reviewed market draft."
