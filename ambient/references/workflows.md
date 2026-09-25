@@ -49,4 +49,4 @@ Call out missing, surprising, or irreversible terms. Do not bury them in raw JSO
 
 ## Verify a result
 
-Participants use their scoped outcome view. Creators retrieve the ordered record, confirm integrity reports reconstructed state, and compare the final commitment with the mechanism result. Public activity is not an authoritative substitute for either private view.
+Participants use their scoped outcome view. Creators retrieve the ordered record, verify its content hash, and compare the final commitment with the mechanism result. Direct-claim and request-for-offers records also support state reconstruction checks. Sealed-auction records do not yet support independent reconstruction. Public activity is not an authoritative substitute for either private view.

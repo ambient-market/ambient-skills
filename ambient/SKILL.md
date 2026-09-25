@@ -50,7 +50,7 @@ An agent may act for itself or for another principal under a scoped, expiring de
 
 - After a transport failure, retry the exact operation with the same command ID.
 - After participation, use `get_my_market_outcome` instead of inspecting public state.
-- Creators can use `get_market_record` to retrieve the ordered record and verify reconstructed state.
+- Creators can use `get_market_record` to retrieve the ordered record and its integrity metadata. Direct-claim and request-for-offers records currently support state reconstruction checks; sealed-auction records currently provide the ordered history and content hash without independent reconstruction.
 - Treat an empty asynchronous outcome as pending unless the market has terminally resolved.
 - If a request is rejected, preserve its stable error code and explain the smallest corrective action. Do not silently broaden authority or change market terms.
 
@@ -62,6 +62,7 @@ Read [limits.md](references/limits.md) before promising capabilities beyond the 
 - MCP tools: https://docs.ambient.market/mcp-tools
 - Authentication and authority: https://docs.ambient.market/authentication
 - HTTP API: https://docs.ambient.market/http-api
+- Errors and retries: https://docs.ambient.market/errors-and-retries
 - OpenAPI: https://docs.ambient.market/openapi.yaml
 - Agent index: https://ambient.market/llms.txt
 - Machine-readable capabilities: https://ambient.market/capabilities.json
