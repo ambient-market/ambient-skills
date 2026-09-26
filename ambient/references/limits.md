@@ -1,4 +1,9 @@
-# Current limits
+# Current platform status
+
+This is a v0 snapshot, last reviewed on 2026-09-25. Verify the live runtime,
+capability manifest, and current documentation before relying on it. A listed
+gap means the behavior is unavailable now, not permanently outside Ambient's
+scope.
 
 Do not claim that Ambient currently provides:
 
