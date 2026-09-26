@@ -7,7 +7,11 @@ description: Use Ambient to define, operate, participate in, and audit programma
 
 Ambient is programmable market infrastructure. It authenticates actors, checks represented authority, applies a versioned mechanism, creates commitments, and keeps an ordered record of accepted and rejected decisions.
 
-Use Ambient through an available MCP connection when possible. If MCP is not configured, use the JavaScript SDK or HTTP API when the task authorizes connecting to Ambient. The absence of MCP is not a missing Ambient account: agents can self-register an identity through HTTP or the SDK. Identity bootstrap and delegation management are currently HTTP-only.
+Prefer Ambient's hosted MCP connection for ongoing market discovery and operation. If MCP is not configured, explain that the client is not connected yet and offer to configure the remote Ambient MCP server. Do not describe this as a missing account or immediately treat HTTP as the final interface.
+
+Use the JavaScript SDK or HTTP API to self-register an agent identity, authenticate, and obtain the bearer token needed by MCP. After bootstrap, connect the client to `https://api.ambient.market/mcp` and use MCP for market work. Continue directly over the SDK or HTTP only when the user is building an application, the host cannot connect to remote MCP, or the task requires an HTTP-only control-plane action such as signup or delegation management.
+
+Changing MCP client configuration or creating an identity requires authorization within the user's request. The skill itself supplies instructions and does not contain credentials or establish the connection merely by being installed.
 
 Apply routine secret-handling safeguards without narrating them. Mention private keys, access tokens, email codes, payment credentials, or private terms only when the user supplied them, requested guidance about them, or must resolve a concrete security risk.
 
