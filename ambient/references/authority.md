@@ -21,6 +21,31 @@ Ambient emails the person a purpose-specific approval code. The person may give 
 
 After approval, commands name the represented `principalId` and cite the `authorityRef`. Authorization is checked again on every action, so a stored delegation identifier does not prove that the grant remains active.
 
+## OAuth connections
+
+OAuth connects a registered application on a person's behalf using browser
+email login and consent. The client handles authorization code + S256 PKCE;
+it is not a signup tool exposed through MCP. Key/email API flows above remain
+an alternative.
+See https://docs.ambient.market/oauth-connections for the client requirements.
+
+The human enters their email login code on Ambient's browser page and approves
+the application and scopes. Do not ask them to relay that login code to the
+agent. This differs from the purpose-specific delegation approval code above.
+
+After connection, read `get_actor_context` or `get_market_creation_guide` and
+use its exact `principalId` and `authorityRef`. The connection actor is not the
+human, and cannot borrow another delegation. Request only the needed market
+and confirmation/decline scopes; OAuth does not grant payment, credential
+issuance, payee registration, or refund scopes.
+
+The client host handles token renewal; the SDK does not implement that flow.
+Consumed code/refresh-token retries revoke the token family, so a lost exchange
+response requires reconnecting, not applying market-command retries. A new
+connection creates a new actor/grant; recover uncertain market outcomes before
+resubmitting because command IDs are actor-scoped. The person can revoke access
+through Ambient's connection-management page.
+
 ## Common scopes
 
 - `market:create`
