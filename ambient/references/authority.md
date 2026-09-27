@@ -23,11 +23,35 @@ After approval, commands name the represented `principalId` and cite the `author
 
 ## OAuth connections
 
-OAuth connects a registered application on a person's behalf using browser
+OAuth connects an application on a person's behalf using browser
 email login and consent. The client handles authorization code + S256 PKCE;
 it is not a signup tool exposed through MCP. Key/email API flows above remain
 an alternative.
-See https://docs.ambient.market/oauth-connections for the client requirements.
+Use the client's built-in connection flow. Ambient advertises a dynamic
+registration endpoint so compatible clients obtain their own client ID and
+register their callback; the person supplies neither. Registration grants no
+authority, and application names are self-asserted, not verified identities.
+
+For Codex CLI, when the user authorizes connecting Ambient, configure the
+remote server in its existing `config.toml` if needed:
+
+```toml
+[mcp_servers.ambient]
+url = "https://api.ambient.market/mcp"
+```
+
+Then start login with explicit scopes:
+
+```bash
+codex mcp login ambient --scopes market:create,market:publish
+```
+
+Choose scopes for the actual task; the example permits creation/publication.
+Keep existing client configuration if already connected. The client manages
+discovery, PKCE, callbacks and token storage; do not manually exchange tokens
+or collect the callback URL in agent chat. If discovery fails, report the
+actual server/client error instead of asking the person for application IDs.
+See https://docs.ambient.market/oauth-connections for other client requirements.
 
 The human enters their email login code on Ambient's browser page and approves
 the application and scopes. Do not ask them to relay that login code to the

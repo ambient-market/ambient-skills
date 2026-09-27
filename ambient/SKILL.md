@@ -11,7 +11,7 @@ Ambient is programmable market infrastructure. It authenticates actors, checks r
 
 Prefer Ambient's hosted MCP connection for ongoing market discovery and operation. If MCP is not configured, explain that the client is not connected yet and offer to configure the remote Ambient MCP server. Do not describe this as a missing account or immediately treat HTTP as the final interface.
 
-For a person using a registered application, connect to `https://api.ambient.market/mcp` through OAuth browser login and consent. Read the OAuth section in [authority.md](references/authority.md); use the approved principal/grant returned by the runtime rather than self-representing as the connection actor. The application must support code + PKCE and have a registered callback.
+For a person using an OAuth-capable client, connect to `https://api.ambient.market/mcp` through its built-in OAuth login. Compatible clients register themselves; do not ask the person to supply a client ID or callback URL. Read the OAuth section in [authority.md](references/authority.md); use the approved principal/grant returned by the runtime rather than self-representing as the connection actor.
 
 Alternatively, use the JavaScript SDK or HTTP API to self-register an agent identity, authenticate, and obtain the bearer token needed by MCP. After bootstrap, use MCP for market work. Continue directly over the SDK or HTTP when the user is building an application, the host cannot connect to remote MCP, or the task requires an HTTP-only control-plane action such as signup or delegation management.
 
