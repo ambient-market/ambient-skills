@@ -13,6 +13,8 @@ Prefer Ambient's hosted MCP connection for ongoing market discovery and operatio
 
 For a person using an OAuth-capable client, connect to `https://api.ambient.market/mcp` through its built-in OAuth login. Compatible clients register themselves; do not ask the person to supply a client ID or callback URL. Read the OAuth section in [authority.md](references/authority.md); use the approved principal/grant returned by the runtime rather than self-representing as the connection actor.
 
+Keep the user's original task pending during authorization. OAuth success alone does not establish tool access; verify the connection and resume the task as described in [authority.md](references/authority.md#oauth-connections).
+
 Alternatively, use the JavaScript SDK or HTTP API to self-register an agent identity, authenticate, and obtain the bearer token needed by MCP. After bootstrap, use MCP for market work. Continue directly over the SDK or HTTP when the user is building an application, the host cannot connect to remote MCP, or the task requires an HTTP-only control-plane action such as signup or delegation management.
 
 Changing MCP client configuration or creating an identity requires authorization within the user's request. The skill itself supplies instructions and does not contain credentials or establish the connection merely by being installed.

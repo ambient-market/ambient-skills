@@ -57,9 +57,23 @@ The human enters their email login code on Ambient's browser page and approves
 the application and scopes. Do not ask them to relay that login code to the
 agent. This differs from the purpose-specific delegation approval code above.
 
-After connection, read `get_actor_context` or `get_market_creation_guide` and
-use its exact `principalId` and `authorityRef`. The connection actor is not the
-human, and cannot borrow another delegation. Request only the needed market
+Treat connection as a prerequisite to the user's original task, not its
+completion. After OAuth succeeds, inspect whether Ambient's tools are available.
+If not, use an available, host-supported MCP refresh/reconnect mechanism to
+reload the connection using the saved authorization. Do not repeat OAuth login
+merely because tools have not loaded, or invent a refresh capability the host
+does not expose.
+
+Verify usable access with a successful `get_actor_context` or
+`get_market_creation_guide` call, then resume the original task within the
+user's request and approved scope. Do not default to asking for a new
+conversation. If the host cannot refresh the current session, explain the
+specific limitation and preserve the pending task, known market/command IDs,
+and any uncertain operation outcome for continuation without exposing secrets.
+Distinguish authorization success, usable tool access, and task completion.
+
+Use the verified response's exact `principalId` and `authorityRef`. The connection
+actor is not the human, and cannot borrow another delegation. Request only the needed market
 and confirmation/decline scopes; OAuth does not grant payment, credential
 issuance, payee registration, or refund scopes.
 
