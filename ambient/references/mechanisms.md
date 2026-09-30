@@ -42,6 +42,22 @@ Required decisions:
 
 Selected offer terms and the requester's selection form the commitment. Providers may replace or withdraw an active offer before the offer deadline.
 
+## Lottery
+
+Use `lottery.v1` for a free, equal-weight draw from one active entry per represented principal.
+
+Required decisions:
+
+- positive award capacity;
+- future `entryClosesAt`;
+- confirmation by nobody (`none`) or the creator (`creator`);
+- for creator review, a positive `confirmationWindowSeconds` and a later hard `resolutionDeadline`; and
+- optional published `eligibilityTerms`, at most 8192 UTF-8 bytes after trimming.
+
+Use `funding.mode: none`. The hosted worker draws after entries close. Creator review confirms a selected candidate or declines with a reason to promote the next original alternate. Silence expires a slot without promotion; promoted review windows are capped by the hard deadline. The creator cannot reroll or select an arbitrary entrant.
+
+Participants submit an entry with optional `evidenceUrl`, recover the entry ID through their own outcome, and may withdraw before close. Entry is not an award. Ambient does not verify evidence, X accounts, one-person uniqueness, or prize delivery. See [participation.md](participation.md) and the [lottery guide](https://docs.ambient.market/lottery).
+
 ## Not implemented
 
-Lottery, ranked choice, open-ended negotiation, automatic ranking, and rolling RFO selection are not implemented mechanisms. Do not translate these into a supported mechanism without the user's informed approval.
+Ranked choice, open-ended negotiation, automatic ranking, and rolling RFO selection are not implemented mechanisms. Do not translate these into a supported mechanism without the user's informed approval.
